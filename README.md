@@ -1,105 +1,97 @@
 # Twitter Bot Detection App
 
 ## Project Overview
-The **Twitter Bot Detection App** is a machine learning-powered web application that helps users determine whether a Twitter account is a bot or a real user. This app analyzes various metrics from a given Twitter profile, such as follower count, tweet activity, and linguistic patterns, and predicts the likelihood of the account being a bot.
+The **Twitter Bot Detection App** is a machine learning-powered application designed to analyze Twitter accounts and determine the likelihood of them being bots. The app fetches user and tweet data, extracts various features, and classifies the account as either a **bot** or **not a bot**.
 
 ### Problem Statement
-With the increasing presence of automated bots on Twitter, identifying fake or misleading accounts has become essential. Bots are often used for spreading misinformation, manipulating public opinion, and inflating engagement metrics. This app provides users with a simple tool to analyze Twitter profiles and determine their authenticity.
+Social media platforms, including Twitter, are often flooded with automated bot accounts that spread misinformation, manipulate public opinion, or engage in spam activities. This project aims to provide a reliable tool to detect such bot accounts and enhance the credibility of online interactions.
 
 ### Key Features
-- **Twitter Profile Analysis**: Extracts various user and tweet-related metrics using the Twitter API.
-- **Machine Learning Model**: Uses a trained Random Forest classifier to predict whether an account is a bot.
-- **Natural Language Processing (NLP)**: Extracts text-based and linguistic features using spaCy.
-- **User-Friendly Interface**: Built with Streamlit for an interactive and simple user experience.
-- **PDF Report Generation**: Provides a downloadable report summarizing the findings.
+- Fetches real-time Twitter user data using the **Tweepy API**.
+- Analyzes key metrics such as followers, tweets, likes, and engagement.
+- Utilizes **Natural Language Processing (NLP)** to analyze text features.
+- Implements a **Random Forest** machine learning model for classification.
+- Generates detailed reports and allows users to download results as a **PDF**.
+- Interactive UI built with **Streamlit**.
+- Provides a demo video for better understanding.
+
+### Demo Video
+🔗 [Watch the Demo](https://www.loom.com/share/d30b61759a484fef96954f8d8b7fd496)
 
 ---
 
 ## Dependencies
-To run this project, you need to install the following dependencies:
+To run this project, you need the following libraries and packages:
 
-| Package    | Version |
-|------------|---------|
-| streamlit  | latest |
-| tweepy     | latest |
-| joblib     | latest |
-| numpy      | latest |
-| pandas     | latest |
-| spacy      | latest |
-| fpdf       | latest |
-| Python     | 3.9+   |
-
-### Installation
-You can install the required dependencies using:
 ```bash
 pip install streamlit tweepy joblib numpy pandas spacy fpdf
 ```
 
-Additionally, you need to download the English NLP model for spaCy:
+| Dependency | Version |
+|------------|---------|
+| Python     | 3.9+    |
+| Streamlit  | latest |
+| Tweepy     | latest |
+| Joblib     | latest |
+| NumPy      | latest |
+| Pandas     | latest |
+| spaCy      | latest |
+| fpdf       | latest |
+
+Ensure you have **spaCy's English model** installed using:
 ```bash
 python -m spacy download en_core_web_sm
 ```
 
 ---
 
-## How to Run the App
-1. Clone this repository:
+## Installation & Usage
+1. Clone the repository:
    ```bash
-   git clone https://github.com/BotNexus/twitter-bot-detectio.git
+   https://github.com/PIYUSH-BHAVSAR/BotNexus.git
    cd twitter-bot-detection
    ```
-2. Ensure all dependencies are installed (see the installation section).
-3. Run the Streamlit app:
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Run the application:
    ```bash
    streamlit run app.py
    ```
-4. Enter a Twitter username in the input field and click **Analyze** to get bot detection results.
+
+4. Enter a Twitter username in the UI and analyze the account.
 
 ---
 
-## API Authentication
-This app uses the Twitter API for fetching user and tweet data. Ensure you have a **Twitter Developer Account** and set up your **Bearer Token** inside `app.py`:
-```python
-BEARER_TOKEN = "your_twitter_bearer_token"
-client = tweepy.Client(bearer_token=BEARER_TOKEN)
-```
+## Model & Prediction
+The model is a **Random Forest classifier** trained on a dataset containing bot and human Twitter accounts. It considers:
+- User account metrics (followers, tweets, likes, retweets, etc.).
+- NLP-based text features (word length, entity recognition, etc.).
+- Engagement metrics (replies, retweets, credibility score, etc.).
+
+After processing, the app predicts if the account is a **bot** or **not a bot**.
 
 ---
 
-## Model Information
-The bot detection model is a **Random Forest classifier** trained on multiple features, including:
-- **Account Metadata**: Followers count, friends count, statuses count, listed count.
-- **Engagement Metrics**: Retweets, replies, likes.
-- **Text Features**: Word count, punctuation frequency, named entity recognition (NER).
-- **Part-of-Speech (POS) Features**: Presence of verbs, adjectives, adverbs, etc.
-
-The model is stored in `random_forest_bot_detector.pkl` and is loaded during runtime:
-```python
-model = joblib.load('random_forest_bot_detector.pkl')
-```
+## Report Generation
+The app generates a **detailed report** with:
+- User engagement statistics.
+- NLP-based text feature analysis.
+- Bot detection prediction.
+- **Downloadable PDF report** for further analysis.
 
 ---
 
-## Output & PDF Report
-Once a Twitter username is analyzed, the app generates a table with the extracted metrics and a **bot prediction**. Users can download a detailed report in PDF format by clicking the **Download Report as PDF** button.
+## Contributing
+Feel free to contribute to the project by submitting issues or pull requests. For major changes, please open an issue first to discuss what you would like to change.
 
 ---
 
-## Future Improvements
-- Improve accuracy by training on a larger dataset.
-- Enhance feature extraction with deep learning models.
-- Implement a Flask API for broader integrations.
-- Extend support for multilingual text analysis.
-
----
-
-## Author
-- **Your Name**
-- **Email:** your.email@example.com
-- **GitHub:** [Your GitHub Profile](https://github.com/your-profile)
-
----
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## Contact
+For any queries or collaborations, reach out to:
+📧 Email: piyushbhavsar1665@gmail.com
+🐦 Linkedin: https://www.linkedin.com/in/piyush-bhavsar
 
